@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotify - Web Player: Music for everyone</title>
+    <link rel="shortcut icon" href="Images/favicon1.ico" type="image/x-icon">
+    <link rel="stylesheet" href="CSS/style.css">
+    <link rel="stylesheet" href="CSS/utility.css">
+</head>
+
+<body>
+    <div class="nav-bar">
+        <div class="ham">
+            <img id="hamburger" src="Images/hamburger.svg" alt="">
+        </div>
+        <div class="navLeft">
+            <div class="logo">
+                <img class="invert" src="Images/logo.svg" alt="">
+                <div class="home">
+                    <img width="30px" class="invert" src="Images/home.svg" alt="">
+                </div>
+            </div>
+            <div class="search">
+                <div class="searchButton">
+                    <img width="30px" class="invert" src="Images/search.svg" alt="">
+                </div>
+                <div class="inputBox">
+                    <input name="search" placeholder="What Do You want to play?" type="text">
+                </div>
+                <div class="browse">
+                    <p>|</p>
+                    <img width="30px" class="invert" src="Images/browse.svg" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="navRight">
+            <div class="helpCenter">
+                <h3>Premium</h3>
+                <h3>Support</h3>
+                <h3>Download</h3>
+            </div>
+            <div class="navRightDivider">
+                <p>|</p>
+            </div>
+            <div class="navRightButtons">
+                <div class="installButton">
+                    <img src="Images/install.svg" alt="">
+                    <button>Install App</button>
+                </div>
+                <div class="signUpButton">
+                    <button>Sign up</button>
+                </div>
+                <div class="loginButton">
+                    <button>Log in</button>
+                    <div class="slidedown">
+                    <img src="Images/downicon.svg" alt="">
+                </div>
+                </div>
+                 
+            </div>
+           
+        </div>
+    </div>
+     <div class="mainSection"> 
+        <div class="leftSection">
+            
+            <div class="library">
+                <h3>Your library</h3>
+                <div class="createPlaylist">
+                    <img width="20px" src="Images/create.svg" alt="">
+                    <h5>Create</h5>
+                </div>
+            </div>
+            
+            <div class="playlistSongs">
+                <ul>
+                  
+                </ul>
+            </div>
+            <div class="leftFooter">
+                <div class="legal-links">
+                    <ul>
+                        <li><a href="">Legal</a></li>
+                        <li><a href="">Safety &amp; Privacy Center</a></li>
+                        <li><a href="">Privacy Policy</a></li>
+                        <li><a href="">Cookies</a></li>
+                        <li><a href="">About Ads</a></li>
+                        <li><a href="">Accessibility</a></li>
+                    </ul>
+
+                    <a href="" target="_blank" rel="noopener">
+                        Cookies
+                    </a>
+                </div>
+                <div class="language">
+                    <img src="Images/language.svg" alt="">
+                    <h4>English</h4>
+                </div>
+            </div>
+
+        </div>
+        <div class="rightSection">
+            <h2>Spotify Playlist</h2>
+            <div class="rightTop">
+              
+
+            </div>
+            <div class="playbar">
+                <div class="audioData">
+                    <div class="songName">
+                       
+                    </div>
+                    <div class="playbuttons">
+                        <img id="previous" src="Images/previous.svg" alt="">
+                        <img id="play" src="Images/play.svg" alt="">
+                        <img id="next" src="Images/next.svg" alt="">
+                    </div>
+                    <div class="songTime">
+
+                        <div class="songDuration">
+                            
+                        </div>
+                        <div class="volume">
+                            <img width="30px" src="Images/volume.svg" alt="">
+                            <input min="0" max="100" name="volume" type="range" value="100" >
+                        </div>
+                    </div>
+                </div>
+                <div class="seekbar">
+                    <div class="circle"></div>
+                </div>
+            </div>
+        </div>
+     </div> 
+    <script src="JavaScript/script.js"></script>
+</body>
+
+</html>

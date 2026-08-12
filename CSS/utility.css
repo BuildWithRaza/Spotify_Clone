@@ -1,0 +1,197 @@
+.invert{
+    filter: invert(1);
+}
+:root{
+    --inputwidth:55px;
+    --plaOp:0;
+    --pad:0px;
+}
+
+@media screen and (max-width:1250px) {
+
+    .leftSection {
+        transform: translateX(-120%);
+        position: absolute;
+        width: 339px;
+        z-index: 10;
+    }
+
+    .ham {
+        display: block;
+    }
+
+    .navLeft {
+        margin-left: 45px;
+    }
+
+
+    .navRight {
+        flex-direction: column;
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        right: 2px;
+        transform: translateY(-29%);
+        padding: 0px 20px;
+    }
+    .navRightActive{
+        flex-direction: column-reverse;
+        transform: translateY(28%);
+        gap: 5px;
+        background-color: black;
+
+    }
+
+    .helpCenter {
+        gap: 8px;
+    }
+
+    .navRightDivider {
+        display: none;
+    }
+
+    .navRightButtons {
+        gap: 20px;
+    }
+
+    .slidedown{
+        display: block;
+    }
+
+    .rightSection {
+        width: 100%;
+        flex: 1;
+
+    }
+}
+
+@media screen and (max-width:1000px) {
+    .inputBox input {
+        padding: var(--padd);
+        width: var(--inputwidth);
+
+    }
+
+    input::placeholder {
+        opacity: var(--plaOp);
+    }
+
+    .browse {
+        display: none;
+    }
+    .search:hover{
+        --inputwidth:200px;
+        --plaOp:1;
+        --padd:0px 0px 0px 50px;
+    }
+   
+}
+
+@media screen and (max-width:700px) {
+
+    
+
+    .audioData {
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 10px;
+    }
+    .songName{
+        width: auto;
+        max-width: 260px;
+    }
+    .songDuration{
+        width: auto;
+    }
+    .volume input{
+        width: auto;
+    }
+
+}
+
+@media screen and (max-width:650px) {
+   
+   
+    .installButton{
+        /* display: none; */
+    }
+    .navRightButtons{
+        gap: 5px;
+    }
+}
+
+@media screen and (max-width:590px){
+    
+    .helpCenter{
+        flex-direction: column;
+        gap: 5px;
+    }
+    .navRightButtons {
+        margin-left: 0px;
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+        
+    }
+    .navRightButtonsActive{
+        flex-direction: column-reverse;
+    }
+    .navRight {
+        transform: translateY(-42%);
+        justify-content: center;
+        align-items: center;
+        width: 150px;
+    }
+    .navRightActive{
+          transform: translateY(42%);
+          z-index: 2;
+    }
+    .rightTop{
+        padding-bottom: 250px;
+    }
+    
+    .card {
+        width: 300px
+    }
+   
+
+}
+
+@media screen and (max-width:460px) {
+    
+ .ham {
+        display: block;
+    }
+   
+    .rightSection{
+        height: 89dvh;
+    }
+
+     .songName{
+        width: auto;
+        max-width: 200px;
+    }
+    .home{
+        display: none;
+    }
+}
+@media screen and (max-width:375px) {
+    
+    .card{
+        width: 250px;
+    }
+    .leftSection{
+        width: 290px;
+    }
+    .playlistSongs ul li{
+        width: 210px;
+    }
+    .navLeft{
+        gap: 5px;
+    }
+   
+}
+

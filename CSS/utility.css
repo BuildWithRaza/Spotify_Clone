@@ -104,7 +104,14 @@
         max-width: 260px;
     }
     .songDuration{
+        
         width: auto;
+    }
+    .songDuration p{
+        margin: 0;
+    }
+    .songName p{
+        margin: 2px;
     }
     .volume input{
         width: auto;
@@ -191,6 +198,9 @@
     }
     .navLeft{
         gap: 5px;
+    }
+    .language{
+        margin-top: -37px;
     }
    
 }

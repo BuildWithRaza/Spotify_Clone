@@ -116,6 +116,9 @@
     .volume input{
         width: auto;
     }
+    .rightTop{
+        padding-bottom: 250px;
+    }
 
 }
 
@@ -156,9 +159,7 @@
           transform: translateY(42%);
           z-index: 2;
     }
-    .rightTop{
-        padding-bottom: 250px;
-    }
+    
     
     .card {
         width: 300px

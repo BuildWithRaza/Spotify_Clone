@@ -77,7 +77,7 @@ async function getSongs(folder) {
 
 
 
-    let a = await fetch(`/Songs/${folder}`);
+    let a = await fetch(`/Songs/${folder.replaceAll("%20"," ")}`);
     if (!a.ok) {
         songUL.innerHTML = `<h4>Please Create a folder named "${folder}" in Songs Folder</h4> `
         return

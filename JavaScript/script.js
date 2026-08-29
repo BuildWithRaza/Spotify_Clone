@@ -33,7 +33,7 @@ async function readInfo(folder) {
     let title = folder.replaceAll("%20", " ");
     let description = folder.replaceAll("%20", " ");
     try {
-        let a = await fetch(`/Songs/${folder}/info.json`);
+        let a = await fetch(`/Songs/${folder.replaceAll("%20"," ")}/info.json`);
 
         if (a.ok) {
             let response = await a.json();

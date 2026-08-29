@@ -33,7 +33,7 @@ async function readInfo(folder) {
     let title = folder.replaceAll("%20", " ");
     let description = folder.replaceAll("%20", " ");
     try {
-        let a = await fetch(`/Songs/${folder.replaceAll("%20"," ")}/info.json`);
+        let a = await fetch(`./Songs/${folder.replaceAll("%20"," ")}/info.json`);
 
         if (a.ok) {
             let response = await a.json();
@@ -77,7 +77,7 @@ async function getSongs(folder) {
 
 
 
-    let a = await fetch(`/Songs/${folder.replaceAll("%20"," ")}`);
+    let a = await fetch(`./Songs/${folder.replaceAll("%20"," ")}`);
     if (!a.ok) {
         songUL.innerHTML = `<h4>Please Create a folder named "${folder}" in Songs Folder</h4> `
         return
@@ -215,7 +215,7 @@ function resetMusicIcons() {
 
 async function displayPlaylist() {
 
-    let a = await fetch(`/Songs`);
+    let a = await fetch(`./Songs`);
     let response = await a.text();
     let div = document.createElement("div");
     div.innerHTML = response;

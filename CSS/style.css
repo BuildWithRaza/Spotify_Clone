@@ -7,8 +7,8 @@
 }
 
 body {
-    background-color: black;
-    color: white;
+    color: rgb(234, 229, 229);
+    background-color: rgb(233, 64, 64);
     font-family: "Inter", sans-serif;
     overflow: hidden;
 }

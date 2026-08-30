@@ -15,7 +15,7 @@ let playbar = document.querySelector(".playbar");
 let navRight = document.querySelector(".navRight");
 let navRightButtons = document.querySelector(".navRightButtons");
 let playlist = null;
-let repeatOne=false;
+let repeatOne = false;
 
 function formatTime(seconds) {
     seconds = Number(seconds) || 0;
@@ -34,7 +34,6 @@ async function readInfo(folder) {
     let description = folder.replaceAll("%20", " ");
     try {
         let a = await fetch(`./Songs/${folder}/info.json`);
-
         if (a.ok) {
             let response = await a.json();
             title = response.title || folder.replaceAll("%20", " ");
@@ -49,6 +48,7 @@ async function readInfo(folder) {
 
 async function getSongs(folder) {
 
+    repeat = document.getElementById("repeat")
     let songUL = document.querySelector(".playlistSongs").getElementsByTagName("ul")[0];
     let playlistName = document.querySelector(".playlistSongs").getElementsByTagName("h4")[0];
 
@@ -58,13 +58,27 @@ async function getSongs(folder) {
 
     if (playlist) {
 
-        if (playlist.length === 0) {
+
+        songs = JSON.parse(playlist)
+        playlistName.innerHTML = (await readInfo(myfol)).title;
+        if (songs.length === 0) {
             songUL.innerHTML = "<h4> No Songs Found </h4>"
+            console.log("empty");
+            let check = currentSong.src.split("/").splice(-1)[0]
+
+            if (check == "undefined" || check == "") {
+                console.log('undefined');
+                return
+            }
+            else {
+                console.log('not undefined');
+                repeatOne = true;
+                repeat.src = "Images/repeatOne.svg"
+                repeat=""
+            }
             return
         }
-        songs = JSON.parse(playlist)
 
-        playlistName.innerHTML = (await readInfo(folder)).title;
 
         displaySongs(songs);
         addListenertoSongs();
@@ -75,9 +89,8 @@ async function getSongs(folder) {
 
     }
 
-
-
-    let a = await fetch(`./Songs/${folder.replaceAll("%20"," ")}`);
+    
+    let a = await fetch(`./Songs/${folder.replaceAll("%20", " ")}`);
     if (!a.ok) {
         songUL.innerHTML = `<h4>Please Create a folder named "${folder}" in Songs Folder</h4> `
         return
@@ -158,7 +171,7 @@ function addListenertoSongs() {
             }
             else {
 
-                let song=e.querySelector(".info").firstElementChild.innerHTML;
+                let song = e.querySelector(".info").firstElementChild.innerHTML;
                 let index = songs.findIndex((el) => {
                     let name = el.split("/")[1].replaceAll("%20", " ");
                     return name === song;
@@ -186,19 +199,19 @@ const playMusic = (track, pause = false) => {
         play.src = "Images/pause.svg"
     }
 
-    document.querySelector(".songName").innerHTML = `<p>${decodeURI(track.split("/")[1].replaceAll("%20", " ").replace(".mp3",""))}</p>`;
+    document.querySelector(".songName").innerHTML = `<p>${decodeURI(track.split("/")[1].replaceAll("%20", " ").replace(".mp3", "").toUpperCase())}</p>`;
     document.querySelector(".songDuration").innerHTML = "<p>00:00/00:00</p>";
 
     let mysongs = JSON.parse(localStorage.getItem("My Playlist")) || [];
-    if (mysongs.includes(track)){
-        addPlaylist.src="Images/fav.svg"
+    if (mysongs.includes(track)) {
+        addPlaylist.src = "Images/fav.svg"
     }
-    else{
-        addPlaylist.src="Images/unfav.svg"
+    else {
+        addPlaylist.src = "Images/unfav.svg"
     }
 
-    repeatOne=false;
-    repeat.src="Images/repeatAll.svg"
+    repeatOne = false;
+    repeat.src = "Images/repeatAll.svg"
 
 }
 
@@ -247,8 +260,8 @@ async function displayPlaylist() {
     //Loding the Playlist dynamically
     Array.from(document.getElementsByClassName("card")).forEach((e) => {
         e.addEventListener("click", async mycard => {
-            await getSongs(mycard.currentTarget.dataset.folder);
             currentSong.pause();
+            await getSongs(mycard.currentTarget.dataset.folder);
             play.src = "Images/play.svg"
             document.querySelector(".circle").style.left = 0;
 
@@ -272,16 +285,18 @@ addPlaylist.addEventListener("click", () => {
 //Function for adding the songs into the playlist
 function addSongstoMyPlaylist(song) {
 
-
+    if ((song == "Songs/undefined") || (song == "") || (song == " ")) {
+        return
+    }
     let mysongs = JSON.parse(localStorage.getItem("My Playlist")) || [];
     if (mysongs.includes(song)) {
-        addPlaylist.src="Images/unfav.svg"
+        addPlaylist.src = "Images/unfav.svg"
         let index = mysongs.indexOf(song)
         mysongs.splice(index, 1)
     }
 
     else {
-        addPlaylist.src="Images/fav.svg"
+        addPlaylist.src = "Images/fav.svg"
         mysongs.push(song)
     }
     localStorage.setItem("My Playlist", JSON.stringify(mysongs))
@@ -289,20 +304,20 @@ function addSongstoMyPlaylist(song) {
 
 //Function for repeat the song
 
-repeat.addEventListener("click",() => {
+repeat.addEventListener("click", () => {
     repeatition();
 }
 )
 
-function repeatition(){
+function repeatition() {
 
-    if(repeatOne==true){
-        repeatOne=false;
-        repeat.src="Images/repeatAll.svg"
+    if (repeatOne == true) {
+        repeatOne = false;
+        repeat.src = "Images/repeatAll.svg"
     }
-    else{
-        repeatOne=true;
-        repeat.src="Images/repeatOne.svg"
+    else {
+        repeatOne = true;
+        repeat.src = "Images/repeatOne.svg"
     }
 }
 
@@ -463,11 +478,12 @@ async function main() {
 
 
         let index = songs.indexOf(currentSong.src.split("/").splice(-2).join("/"))
-        if(repeatOne==true){
+        if (repeatOne == true) {
             currentSong.pause();
-            playMusic(songs[index])
-            repeatOne=true;
-            repeat.src="Images/repeatOne.svg"
+            playMusic(currentSong.src.split("/").splice(-2).join("/"))
+            //     playMusic(songs[index])
+            repeatOne = true;
+            repeat.src = "Images/repeatOne.svg"
         }
         else if (index + 1 < songs.length) {
             currentSong.pause();

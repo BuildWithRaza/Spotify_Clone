@@ -33,11 +33,11 @@ async function readInfo(folder) {
     let title = folder.replaceAll("%20", " ");
     let description = folder.replaceAll("%20", " ");
     try {
-        let a = await fetch(`./Songs/${folder.replaceAll("%20"," ")}/info.json`);
+        let a = await fetch(`./Songs/${folder}/info.json`);
 
         if (a.ok) {
             let response = await a.json();
-            title = response.title || folder;
+            title = response.title || folder.replaceAll("%20", " ");
             description = response.description || "";
         }
     } catch (error) {
@@ -83,8 +83,6 @@ async function getSongs(folder) {
         return
     }
     let response = await a.text();
-    console.log(response);
-    
     let div = document.createElement("div");
     div.innerHTML = response;
     let as = Array.from(div.getElementsByTagName("a"));
@@ -219,8 +217,6 @@ async function displayPlaylist() {
 
     let a = await fetch(`./Songs`);
     let response = await a.text();
-    console.log(response);
-    
     let div = document.createElement("div");
     div.innerHTML = response;
     let anchors = div.getElementsByTagName("a");
@@ -312,7 +308,7 @@ function repeatition(){
 
 async function main() {
 
-    await getSongs("90's Songs");
+    await getSongs("My Playlist");
 
     displayPlaylist();
 

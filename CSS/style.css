@@ -7,8 +7,8 @@
 }
 
 body {
-    color: rgb(234, 229, 229);
-    background-color: rgb(233, 64, 64);
+    background-color: black;
+    color: white;
     font-family: "Inter", sans-serif;
     overflow: hidden;
 }
@@ -464,4 +464,3 @@ body {
     top: -5px;
     transition: left 0.5s;
 }
-

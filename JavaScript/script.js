@@ -37,7 +37,7 @@ async function readInfo(folder) {
 
         if (a.ok) {
             let response = await a.json();
-            title = response.title || thefolder;
+            title = response.title || folder;
             description = response.description || "";
         }
     } catch (error) {
@@ -83,6 +83,8 @@ async function getSongs(folder) {
         return
     }
     let response = await a.text();
+    console.log(response);
+    
     let div = document.createElement("div");
     div.innerHTML = response;
     let as = Array.from(div.getElementsByTagName("a"));
@@ -94,7 +96,7 @@ async function getSongs(folder) {
         }
     }
     if (songs.length > 0) {
-        // playMusic(songs[0], true);
+        playMusic(songs[0], true);
     }
 
 
@@ -179,7 +181,7 @@ function addListenertoSongs() {
 //Function for Play Music
 const playMusic = (track, pause = false) => {
 
-    currentSong.src = `/Songs/` + track;
+    currentSong.src = `./Songs/` + track;
     if (!pause) {
 
         currentSong.play();
@@ -217,6 +219,8 @@ async function displayPlaylist() {
 
     let a = await fetch(`./Songs`);
     let response = await a.text();
+    console.log(response);
+    
     let div = document.createElement("div");
     div.innerHTML = response;
     let anchors = div.getElementsByTagName("a");
@@ -233,7 +237,7 @@ async function displayPlaylist() {
             const info = await readInfo(thefolder)
 
             rightTop.innerHTML = rightTop.innerHTML + `<div data-folder="${thefolder}" class="card">
-                    <img src="/Songs/${thefolder}/cover.jpg" alt="${info.title}"  onerror="this.onerror=null; this.src='/Images/default-cover.jpg';">
+                    <img src="./Songs/${thefolder}/cover.jpg" alt="${info.title}"  onerror="this.onerror=null; this.src='./Images/default-cover.jpg';">
                     <h3>${info.title}</h3>
                     <p>${info.description}</p>
                      <div class="cardplay">

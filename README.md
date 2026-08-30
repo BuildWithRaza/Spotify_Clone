@@ -263,8 +263,8 @@ Spotify and its related trademarks belong to their respective owners.
 
 ## 👨‍💻 Author
 
-Your Name
+### Mohammad Akhtar Raza Chaudhary
 
-GitHub: your-github-username
+### [👉🏻GitHub](https://github.com/BuildWithRaza)
 
 ⭐ If you found this project useful, consider giving the repository a star!
